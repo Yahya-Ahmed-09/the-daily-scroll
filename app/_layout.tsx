@@ -1,39 +1,45 @@
-import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native';
+import { Stack } from "expo-router";
 import { useFonts } from 'expo-font';
-import { Stack } from 'expo-router';
+import "../global.css";
+import { Poppins_400Regular as poppinsRegular, Poppins_700Bold as poppinsBold, Poppins_600SemiBold_Italic as poppinsSemiBoldItalic } from '@expo-google-fonts/poppins'
+import { Inter_500Medium as interMedium } from '@expo-google-fonts/inter'
+import {SpaceGrotesk_700Bold as spaceBold, SpaceGrotesk_500Medium as spaceMedium} from '@expo-google-fonts/space-grotesk'
 import * as SplashScreen from 'expo-splash-screen';
-import { StatusBar } from 'expo-status-bar';
-import { useEffect } from 'react';
-import 'react-native-reanimated';
+import { useContext, useEffect } from "react";
+import { AuthProvider } from '@/context/AuthContext'
+import { ApiProvider } from "@/context/ApiContext"
 
-import { useColorScheme } from '@/hooks/useColorScheme';
-
-// Prevent the splash screen from auto-hiding before asset loading is complete.
 SplashScreen.preventAutoHideAsync();
 
 export default function RootLayout() {
-  const colorScheme = useColorScheme();
-  const [loaded] = useFonts({
-    SpaceMono: require('../assets/fonts/SpaceMono-Regular.ttf'),
-  });
-
+  const [loaded, error] = useFonts({
+    poppinsRegular,
+    poppinsBold,
+    interMedium,
+    poppinsSemiBoldItalic,
+    spaceBold,
+    spaceMedium
+  })
   useEffect(() => {
-    if (loaded) {
+    if (loaded || error) {
       SplashScreen.hideAsync();
     }
-  }, [loaded]);
+    
+  }, [loaded, error]);
 
-  if (!loaded) {
+  if (!loaded && !error) {
     return null;
   }
-
   return (
-    <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
-      <Stack>
-        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-        <Stack.Screen name="+not-found" />
-      </Stack>
-      <StatusBar style="auto" />
-    </ThemeProvider>
-  );
+    <AuthProvider>
+      <ApiProvider>
+        <Stack screenOptions={{ headerShown: false }}>
+          <Stack.Screen name="(tabs)" />
+          <Stack.Screen name="index" />
+          <Stack.Screen name="Login" />
+          <Stack.Screen name="SignUp" />
+        </Stack>
+      </ApiProvider>
+    </AuthProvider>
+  )
 }
