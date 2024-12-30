@@ -11,6 +11,7 @@ import { app } from '@/db/firestore';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import CancelModal from '@/components/CancelModal';
 import NavigationHeader from '@/components/NavigationHeader';
+import { heightPercentageToDP as hp, widthPercentageToDP as wp } from 'react-native-responsive-screen';
 
 const Profile = () => {
   const { isModalVisible,modalVisibility,userData, genderData, isLoggedUid } = useContext<null | any>(AuthContext)
@@ -178,88 +179,93 @@ const styles = StyleSheet.create({
   mainContaier: {
     flex: 1,
     paddingVertical: 20,
+    height: hp(100),
+    width: wp(100)
   },
   header:{
-    paddingHorizontal: 20
+    paddingHorizontal: wp(3)
   },
   topContainer: {
-    height: 250,
+    height: hp(20),
     // backgroundColor: 'red',
     justifyContent: 'center',
     alignItems: 'center',
     gap: 20
   },
   topContainerBGImage: {
-    height: 100,
-    width: 100,
+    height: hp(10),
+    width: wp(20),
     borderRadius: 50,
   },
   topContainerForegroundContainer: {
-    height: 100,
-    width: 100,
-    borderRadius: 50,
+    height: hp(10),
+    width: wp(20),
+    borderRadius: hp(50),
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#00000053'
   },
   topContainerTitle: {
     fontFamily: 'poppinsRegular',
-    fontSize: 18,
+    fontSize: hp(1.8),
     
   },
   bottomContainer: {
-    padding: 20,
+    padding: hp(2),
     gap: 10
   },
   bottomContainerTitle: {
     fontFamily: 'spaceMedium',
-    fontSize: 16,
+    fontSize: hp(1.6),
     color: Colors.LIGHT_GREY,
     textAlign: 'center',
-    marginBottom: 20
+    marginBottom: hp(2)
   },
   inputContainer:{
     gap: 10
   },
   label:{
     fontFamily: 'poppinsRegular',
-    fontSize: 15
+    fontSize: hp(1.5)
   },
   textInput:{
-    height: 70,
+    height: hp(7),
     borderWidth: 2,
     fontFamily: 'interMedium',
     paddingLeft: 10,
     borderRadius: 15,
     borderColor: '#E1E1E1',
+    fontSize: hp(1.4)
   },
   buttonContainer:{
-    marginTop: 20,
-    width: '100%',
+    marginTop: hp(2),
+    width: wp(90),
     flexDirection: 'row',
     justifyContent: 'space-between'
   },
   cancelBtn:{
-    paddingHorizontal: 30,
-    paddingVertical: 15,
+    paddingHorizontal: wp(6),
+    paddingVertical: hp(1),
     borderWidth: 2,
     borderColor: Colors.LIGHT_GREY,
     borderRadius: 10
   },
   cancelText:{
     fontFamily: 'poppinsRegular',
-    paddingTop: 5,
-    color: Colors.LIGHT_GREY
+    paddingTop: hp(1),
+    color: Colors.LIGHT_GREY,
+    fontSize: hp(1.4)
   },
   saveBtn:{
-    paddingHorizontal: 30,
-    paddingVertical: 15,
+    paddingHorizontal: wp(6),
+    paddingVertical: hp(1),
     backgroundColor: Colors.PRIMARY,
     borderRadius: 10
   },
   saveText:{
     fontFamily: 'poppinsRegular',
-    paddingTop: 5,
-    color: Colors.WHITE
+    paddingTop: hp(1),
+    color: Colors.WHITE,
+    fontSize: hp(1.4)
   }
 })

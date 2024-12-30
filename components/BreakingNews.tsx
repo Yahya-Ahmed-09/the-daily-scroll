@@ -5,6 +5,9 @@ import { ApiContext } from '@/context/ApiContext'
 import Animated, { useAnimatedRef, useAnimatedScrollHandler, useSharedValue } from 'react-native-reanimated'
 import Pagination from './Pagination'
 import { Colors } from '@/constants/Colors'
+import { heightPercentageToDP } from 'react-native-responsive-screen'
+
+
 
 
 const BreakingNews = () => {
@@ -43,7 +46,7 @@ const BreakingNews = () => {
   });
 
   return (
-    <View>
+    <View >
       <Text style={styles.heading}>BreakingNews</Text>
 
       <Animated.FlatList
@@ -69,10 +72,12 @@ const BreakingNews = () => {
   )
 }
 const styles = StyleSheet.create({
+
   heading: {
-    padding: 20,
+    paddingHorizontal: 20,
+    paddingBottom: 10,
     fontFamily: 'spaceBold',
-    fontSize: 24,
+    fontSize: heightPercentageToDP(2.4),
     color: Colors.PRIMARY
   }
 })

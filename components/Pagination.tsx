@@ -2,6 +2,7 @@ import { StyleSheet, Text, View } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import Animated, { SharedValue } from 'react-native-reanimated'
 import { Colors } from '@/constants/Colors'
+import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 
 interface Props {
   paginationIndex: number,
@@ -25,13 +26,13 @@ export default React.memo(Pagination)
 const styles = StyleSheet.create({
     container:{
         flexDirection: 'row',
-        height: 40,
+        height: hp(3),
         justifyContent: 'center',
         alignItems: 'center'
     },
     dot:{
-        height: 8,
-        width: 8, 
+        height: hp(0.8),
+        width: wp(1.6), 
         marginHorizontal: 2,
         borderRadius: 8,
         backgroundColor: '#333'

@@ -5,6 +5,7 @@ import { Colors } from '@/constants/Colors'
 import AccountListCard from '@/components/AccountListCard'
 import { AuthContext } from '@/context/AuthContext'
 import NavigationHeader from '@/components/NavigationHeader'
+import { heightPercentageToDP as hp, widthPercentageToDP as wp } from 'react-native-responsive-screen';
 
 
 
@@ -78,16 +79,16 @@ const styles = StyleSheet.create({
   topContainer: {
   },
   TopContainerBGImage: {
-    width: '100%',
-    height: 330,
+    width: wp(100),
+    height: hp(33),
     alignItems: 'center',
     justifyContent: 'center',
     gap: 10,
     borderBottomRightRadius: 50,
   },
   userImage: {
-    width: 100,
-    height: 100,
+    width: wp(20),
+    height: hp(10),
     borderRadius: 50
   },
   userDetailsContainer:{
@@ -101,16 +102,17 @@ const styles = StyleSheet.create({
    alignItems: 'center'
   },
   userData: {
-    fontSize: 12,
+    fontSize: hp(1.2),
     fontFamily: 'poppinsRegular',
     color: Colors.WHITE
   },
   data: {
-    fontSize: 12,
+    fontSize: hp(1.2),
     fontFamily: 'poppinsBold',
     color: Colors.WHITE,
   },
   bottomContainer: {
-    padding: 20
+    paddingHorizontal:20,
+    paddingVertical: 10
   }
 })

@@ -6,6 +6,8 @@ import { getAuth, sendPasswordResetEmail } from 'firebase/auth';
 import { app } from '@/db/firestore';
 import { useRouter } from 'expo-router';
 import AlertModal from '@/components/AlertModal';
+import { heightPercentageToDP as hp, widthPercentageToDP as wp } from 'react-native-responsive-screen';
+
 
 const ForgotPass = () => {
     const [email, setEmail] = useState<string>('');
@@ -107,11 +109,11 @@ const styles = StyleSheet.create({
     heading: {
         textAlign: 'center',
         fontFamily: 'poppinsBold',
-        fontSize: 30
+        fontSize: hp(3)
     },
     subline: {
         textAlign: 'center',
-        fontSize: 14,
+        fontSize: hp(1.3),
         fontFamily: 'poppinsRegular',
         color: Colors.LIGHT_GREY
     },
@@ -119,12 +121,12 @@ const styles = StyleSheet.create({
         gap: 10
     },
     label: {
-        fontSize: 14,
+        fontSize: hp(1.4),
         fontFamily: 'poppinsBold',
         color: Colors.BLACK
     },
     textInput:{
-        height: 70,
+        height: hp(7),
         borderWidth: 2,
         fontFamily: 'interMedium',
         paddingLeft: 10,
@@ -137,8 +139,8 @@ const styles = StyleSheet.create({
     },
     sendBtn: {
         backgroundColor: Colors.PRIMARY,
-        width: '100%',
-        height: 70,
+        width: wp(90),
+        height: hp(7),
         justifyContent: 'center',
         alignItems: 'center',
         borderRadius: 15,

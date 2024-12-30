@@ -3,8 +3,8 @@ import React, { useCallback, useContext } from 'react'
 import { AuthContext } from '@/context/AuthContext'
 import { useFocusEffect } from '@react-navigation/native'
 import Ionicons from '@expo/vector-icons/Ionicons';
-import { Colors } from '@/constants/Colors';
 import { useRouter } from 'expo-router';
+import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 
 const HomeHeader = () => {
     const logo = require('@/assets/images/header-logo.webp')
@@ -27,7 +27,7 @@ const HomeHeader = () => {
 
                 <View style={styles.rightContainer}>
                     <TouchableOpacity style={styles.iconButton} onPress={()=> router.navigate('/(tabs)/Category/Search')} activeOpacity={0.6}>
-                        <Ionicons name="search-sharp" size={40} color="black" />
+                        <Ionicons name="search-sharp" size={hp(4)} color="black" />
                     </TouchableOpacity>
                     <TouchableOpacity style={styles.iconButton} onPress={()=> router.push('/(tabs)/account')} activeOpacity={0.6}>
                         {userData.image ? (
@@ -51,15 +51,16 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between',
         alignItems: 'center',
         padding: 10,
+        height: hp(10)
     },
     logoContainer: {
         justifyContent: 'center',
         alignItems: 'center',
-        height: 80,
+        height: hp(8),
     },
     logo: {
-        width: 180,
-        height: 150,
+        width: wp(35),
+        height: hp(30),
         objectFit: 'contain'
     },
     rightContainer: {
@@ -70,8 +71,8 @@ const styles = StyleSheet.create({
         marginHorizontal: 10,
     },
     userImage: {
-        width: 50,
-        height: 50,
+        width: wp(10),
+        height: hp(5),
         borderRadius: 30,
         resizeMode: 'cover',
     },

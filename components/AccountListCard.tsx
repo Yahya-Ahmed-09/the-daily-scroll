@@ -3,6 +3,7 @@ import React from 'react'
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { Colors } from '@/constants/Colors';
 import FontAwesome from '@expo/vector-icons/FontAwesome';
+import { heightPercentageToDP as hp, widthPercentageToDP as wp } from 'react-native-responsive-screen';
 
 interface Props{
     title: string,
@@ -14,7 +15,7 @@ const AccountListCard: React.FC<Props> = ({title, navigation, icon}) => {
         <View>
             <TouchableOpacity activeOpacity={0.6}  onPress={navigation} style={styles.card}>
                 <View style={styles.cardDetail}>
-                <FontAwesome name={icon} size={24} color={Colors.PRIMARY} />
+                <FontAwesome style={{paddingTop: hp(0.5)}} name={icon} size={hp(2.4)} color={Colors.PRIMARY} />
                 <Text style={styles.text}>{title}</Text>
                 
                 </View>
@@ -31,8 +32,8 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'space-between',
         alignItems: 'center',
-        padding: 20,
-        borderRadius: 30,
+        padding: hp(1.5),
+        borderRadius: wp(3),
         borderColor: Colors.PRIMARY,
         borderWidth: 1,
         marginBottom: 20
@@ -41,10 +42,10 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'center',
         alignItems: 'center',
-        gap: 20
+        gap: 20,
     },
     text:{
-        fontSize: 14,
+        fontSize: hp(1.4),
         fontFamily: 'poppinsBold',
         color: Colors.PRIMARY,
         paddingTop: 5

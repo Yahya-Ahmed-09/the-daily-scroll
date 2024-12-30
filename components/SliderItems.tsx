@@ -6,6 +6,7 @@ import { LinearGradient } from "expo-linear-gradient"
 import { Colors } from '@/constants/Colors';
 import Animated, { Extrapolation, interpolate, SharedValue, useAnimatedStyle } from 'react-native-reanimated';
 import { Link } from 'expo-router';
+import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 
 const width = Dimensions.get('window').width;
 interface Props {
@@ -59,12 +60,12 @@ const styles = StyleSheet.create({
     position: 'relative',
     justifyContent: 'center',
     alignItems: 'center',
-    width: width,
+    width: wp(100),
 
   },
   image: {
-    width: width - 60,
-    height: 180,
+    width: wp(100) - 60,
+    height: hp(20),
     borderRadius: 20
   },
   background: {
@@ -72,9 +73,9 @@ const styles = StyleSheet.create({
     left: 30,
     right: 0,
     top: 0,
-    width: width - 60,
+    width: wp(100) - 60,
     borderRadius: 20,
-    height: 180,
+    height: hp(20),
     padding: 20,
   },
   source:{
@@ -88,12 +89,12 @@ const styles = StyleSheet.create({
   sourceName:{
     color: Colors.WHITE,
     fontFamily: 'poppinsSemiBoldItalic',
-    fontSize: 16
+    fontSize: hp(1.6)
   },
   titleName:{
     color: Colors.WHITE,
     fontFamily: 'poppinsRegular',
-    fontSize: 12
+    fontSize: hp(1.2)
   }
 
 })

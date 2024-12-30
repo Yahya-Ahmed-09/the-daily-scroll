@@ -1,6 +1,7 @@
 import { FlatList, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import React from 'react'
 import { Colors } from '@/constants/Colors'
+import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 
 interface Props {
     categories: any,
@@ -28,8 +29,8 @@ export default React.memo(CategoriesCard)
 
 const styles = StyleSheet.create({
     categoryCard:{
-        paddingHorizontal: 30,
-        paddingVertical: 10,
+        paddingHorizontal: wp(6),
+        paddingVertical: hp(1),
         backgroundColor: Colors.SLIGHTBG,
         margin: 5,
         borderRadius: 30

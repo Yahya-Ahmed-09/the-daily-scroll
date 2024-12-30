@@ -7,7 +7,7 @@ import {app} from '@/db/firestore'
 import {getAuth, createUserWithEmailAndPassword, sendEmailVerification,} from "firebase/auth";
 import {getFirestore, doc, setDoc, getDoc} from 'firebase/firestore'
 import Loader from '@/components/Loader';
-import { AuthContext } from '@/context/AuthContext';
+import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 
 
 const SignUp = () => {
@@ -152,14 +152,14 @@ const SignUp = () => {
                                 fontFamily: 'poppinsRegular',
                                 paddingTop: 5,
                                 color: Colors.WHITE,
-                                fontSize: 18,
+                                fontSize: hp(1.8),
                             }}
                         >
                             Sign Up
                         </Text>
                     </TouchableOpacity>
                     {errorMessage ? (
-                        <Text style={{ color: 'red', textAlign: 'center', fontFamily: 'poppinsRegular', fontSize: 12 }}>
+                        <Text style={{ color: 'red', textAlign: 'center', fontFamily: 'poppinsRegular', fontSize: hp(1.2) }}>
                             {errorMessage}
                         </Text>
                     ) : null}
@@ -198,19 +198,19 @@ const styles = StyleSheet.create({
         top: 20,
     },
     signUpTopContainer: {
-        width: '100%',
-        height: 330,
+        width: wp(100),
+        height: hp(32),
         alignItems: 'center',
         justifyContent: 'center'
     },
     signUpTopContainerImage: {
-        width: 150,
-        height: 150
+        width: wp(15),
+        height: hp(15)
     },
     signUpTopContainerTitle: {
         fontFamily: 'poppinsBold',
         color: Colors.WHITE,
-        fontSize: 24
+        fontSize: hp(2.4)
     },
     signUpBottomContainer: {
         padding: 20,
@@ -232,7 +232,7 @@ const styles = StyleSheet.create({
         borderColor: '#E1E1E1',
         borderWidth: 2,
         fontFamily: 'interMedium',
-        fontSize: 12,
+        fontSize: hp(1.2),
         justifyContent: 'center'
     },
     signUpBottomContainerButtonContainer: {
@@ -242,8 +242,8 @@ const styles = StyleSheet.create({
     },
     signUpBottomContainerButton: {
         backgroundColor: Colors.PRIMARY,
-        width: '100%',
-        height: 60,
+        width: wp(90),
+        height: hp(6),
         justifyContent: 'center',
         alignItems: 'center',
         borderRadius: 15,
@@ -253,7 +253,7 @@ const styles = StyleSheet.create({
         color: Colors.LIGHT_GREY,
         textAlign: 'center',
         fontFamily: 'poppinsRegular',
-        fontSize: 12,
+        fontSize: hp(1.2),
     },
     signUpBottomContainerText: {
         fontFamily: 'poppinsRegular'

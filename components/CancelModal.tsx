@@ -1,10 +1,10 @@
-import { Animated, Button, Modal, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
-import React, { useContext, useEffect, useRef, useState } from 'react'
-// import Modal from 'react-native-modal'
+import {Modal, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
+import React, { useContext} from 'react'
 
 import { Colors } from '@/constants/Colors'
 import { AuthContext } from '@/context/AuthContext'
 import { useRouter } from 'expo-router'
+import { heightPercentageToDP as hp, widthPercentageToDP as wp } from 'react-native-responsive-screen';
 
 
 
@@ -77,13 +77,12 @@ const styles = StyleSheet.create({
         borderRadius: 20,
         padding: 30,
         gap: 20,
-        width: '90%', 
+        width: wp(90), 
       },
     main: {
         justifyContent: 'center',
         alignItems: 'center',
-        
-        height: 200,
+        height: hp(2),
         borderRadius: 20,
         padding: 30,
         gap: 20,
@@ -92,19 +91,22 @@ const styles = StyleSheet.create({
     },
     text: {
         fontFamily: 'poppinsBold',
-        textAlign: 'center'
+        textAlign: 'center',
+        fontSize: hp(1.5)
     },
     btnContainer: {
         flexDirection: 'row',
         justifyContent: 'space-between',
         alignItems: 'center',
-        gap: 30
+        gap: 30,
     },
     discardBtn: {
-        paddingHorizontal: 30,
-        paddingVertical: 10,
+        paddingHorizontal: wp(6),
+        paddingVertical: hp(1),
         backgroundColor: Colors.PRIMARY,
-        borderRadius: 10
+        borderRadius: 10,
+        borderWidth: 2,
+        borderColor: Colors.PRIMARY,
     },
     discardText: {
         fontFamily: 'poppinsRegular',
@@ -112,8 +114,8 @@ const styles = StyleSheet.create({
         color: Colors.WHITE
     },
     cancelBtn: {
-        paddingHorizontal: 30,
-        paddingVertical: 10,
+      paddingHorizontal: wp(6),
+      paddingVertical: hp(1),
         borderWidth: 2,
         borderColor: Colors.LIGHT_GREY,
         borderRadius: 10

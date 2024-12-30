@@ -3,6 +3,7 @@ import React, { useContext, useEffect, useRef, useState } from 'react'
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { Colors } from '@/constants/Colors';
 import { AuthContext } from '@/context/AuthContext';
+import { heightPercentageToDP as hp, widthPercentageToDP as wp } from 'react-native-responsive-screen';
 
 interface Props{
     genders: Array<String>
@@ -54,7 +55,7 @@ export default React.memo(DropDown)
 
 const styles = StyleSheet.create({
     box: {
-        height: 70,
+        height: hp(7),
         borderWidth: 2,
         fontFamily: 'interMedium',
         paddingLeft: 10,
@@ -63,11 +64,12 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'space-between',
         alignItems: 'center',
-        paddingHorizontal: 10
+        paddingHorizontal: wp(1.5)
     },
     gender:{
         fontFamily: 'poppinsRegular',
         paddingTop: 5,
+        fontSize: hp(1.4)
     },
     dataContainer: {
         width: '100%',
@@ -83,10 +85,10 @@ const styles = StyleSheet.create({
         gap: 20, 
         position: 'absolute',
         zIndex: 1,
-        top: 60
+        top: hp(7)
     },
     text:{
         fontFamily: 'poppinsRegular',
-        fontSize: 18
+        fontSize: hp(1.6)
     }
 })

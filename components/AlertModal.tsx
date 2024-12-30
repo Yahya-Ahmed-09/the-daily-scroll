@@ -2,6 +2,7 @@ import { Modal, StyleSheet, Text, Touchable, TouchableOpacity, View } from 'reac
 import React, { useState } from 'react'
 import { Colors } from '@/constants/Colors'
 import { useRouter } from 'expo-router'
+import { heightPercentageToDP as hp, widthPercentageToDP as wp } from 'react-native-responsive-screen';
 
 interface Props {
     visibility: boolean,
@@ -9,8 +10,6 @@ interface Props {
     onClose: ()=> void
 }
 const AlertModal: React.FC<Props> = ({ visibility,email, onClose }) => {
-    const router = useRouter()
-
     const onOkBtn =()=>{
         onClose()
         // router.navigate('/Login')
@@ -61,17 +60,17 @@ const styles = StyleSheet.create({
         borderRadius: 20,
         padding: 30,
         gap: 20,
-        width: '90%',
+        width: wp(80),
     },
     main:{
         gap: 10
     },
     heading:{
         fontFamily:"poppinsBold",
-        fontSize: 20
+        fontSize: hp(2)
     },
     text:{
-        fontSize: 11,
+        fontSize: hp(1.2),
         fontFamily: 'poppinsRegular'
     },
     emailtext:{
@@ -79,7 +78,7 @@ const styles = StyleSheet.create({
     },
     btn:{
         width: '100%',
-        height: 50,
+        height: hp(5),
         justifyContent: 'center',
         alignItems: 'center',
         backgroundColor: Colors.PRIMARY,

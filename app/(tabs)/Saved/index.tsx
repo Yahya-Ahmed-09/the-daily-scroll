@@ -5,6 +5,7 @@ import { ApiContext } from '@/context/ApiContext'
 import NewsScrollView from '@/components/NewsScrollView'
 import { useFocusEffect } from '@react-navigation/native'
 import NavigationHeader from '@/components/NavigationHeader'
+import { heightPercentageToDP as hp, widthPercentageToDP as wp } from 'react-native-responsive-screen';
 
 const SavedArticles = () => {
   const { clearBookmark, savedArticle, loadBookmark, } = useContext<any>(ApiContext)
@@ -24,7 +25,7 @@ const SavedArticles = () => {
           <Text  style={{ color: Colors.WHITE, fontFamily:'poppinsRegular', paddingTop: 5 }}>Clear all</Text>
         </TouchableOpacity>
       </View>
-      <View style={{ flex: 1 }} >
+      <View style={{ flex: 1, marginLeft: wp(-5) }} >
         <FlatList
           showsVerticalScrollIndicator={false}
           data={savedArticle}
@@ -42,22 +43,23 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: 20,
     gap: 20,
-    width: '100%',
+    width: wp(100),
+    height: hp(100)
   },
   headingContainer:{
     flexDirection: 'row',
-    width: '100%',
+    width: wp(90),
     justifyContent: 'space-between',
     alignItems: 'center',
   },
   heading: {
     fontFamily: 'spaceBold',
-    fontSize: 30,
+    fontSize: hp(3),
     color: Colors.PRIMARY,
   },
   clearBtn:{
-    paddingVertical: 10,
-    paddingHorizontal: 20,
+    paddingVertical: hp(1),
+    paddingHorizontal: wp(3),
     borderRadius: 5,
     backgroundColor: Colors.DARK
   }

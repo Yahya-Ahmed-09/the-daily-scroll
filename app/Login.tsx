@@ -6,6 +6,7 @@ import { Colors } from '@/constants/Colors'
 import { getAuth, signInWithEmailAndPassword } from 'firebase/auth'
 import { AuthContext } from '@/context/AuthContext'
 import Loader from '@/components/Loader'
+import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 
 
 
@@ -32,8 +33,9 @@ const Login = () => {
         }
 
         const auth = getAuth();
-        setLoader(true)
+        
         try {
+            setLoader(true)
             const userCredential = await signInWithEmailAndPassword(auth, email, pass);
             const user = userCredential.user;
             const userUid:any = user.uid;
@@ -45,6 +47,7 @@ const Login = () => {
             
         } catch (error) {
             setErrorMessage("Invalid Credentials")
+            setLoader(false)
             console.log("Error message", error)
         }
     }
@@ -89,10 +92,10 @@ const Login = () => {
                     onPress={onLogin} 
                     activeOpacity={0.6} 
                     style={styles.loginBottomContainerButton}>
-                    <Text style={{ fontFamily: 'poppinsRegular', paddingTop: 5, color: Colors.WHITE, fontSize: 18 }}>Login</Text>
+                    <Text style={{ fontFamily: 'poppinsRegular', paddingTop: 5, color: Colors.WHITE, fontSize: hp(1.8) }}>Login</Text>
                 </TouchableOpacity>
                 {errorMessage ? (
-                    <Text style={{ color: 'red', textAlign: 'center', fontFamily: 'poppinsRegular', fontSize: 12 }}>
+                    <Text style={{ color: 'red', textAlign: 'center', fontFamily: 'poppinsRegular', fontSize: hp(1.2) }}>
                         {errorMessage}
                     </Text>
                 ) : null}
@@ -129,22 +132,22 @@ const styles = StyleSheet.create({
         paddingBottom: 30
     },
     loginTopContainerImage: {
-        width: 200,
-        height: 200
+        width: wp(50),
+        height: hp(20)
     },
     loginTopContainerTitle: {
         fontFamily: 'poppinsBold',
-        fontSize: 20,
+        fontSize: hp(2),
         color: Colors.DARK
     },
     loginTopContainerSubtitle: {
         fontFamily: 'interMedium',
-        fontSize: 16
+        fontSize: hp(1.6)
     },
     loginBottomContainer: {
         gap: 20,
         padding: 20,
-        width: "100%"
+        width: wp(100)
     },
     loginBottomContainerInputs: {
         padding: 20,
@@ -152,7 +155,7 @@ const styles = StyleSheet.create({
         borderColor: '#E1E1E1',
         borderWidth: 2,
         fontFamily: 'interMedium',
-        fontSize: 12,
+        fontSize: hp(1.2),
         justifyContent: 'center'
     },
     loginBottomContainerbtnContainer: {
@@ -161,8 +164,8 @@ const styles = StyleSheet.create({
     },
     loginBottomContainerButton: {
         backgroundColor: Colors.PRIMARY,
-        width: '100%',
-        height: 60,
+        width: wp(90),
+        height: hp(7),
         justifyContent: 'center',
         alignItems: 'center',
         borderRadius: 15,
@@ -170,7 +173,7 @@ const styles = StyleSheet.create({
     },
     loginBottomContainerText: {
         fontFamily: 'poppinsRegular',
-        fontSize: 14
+        fontSize: hp(1.4)
     },
     loginBottomContainerLink: {
         color: Colors.PRIMARY
@@ -178,7 +181,7 @@ const styles = StyleSheet.create({
     forgetPass:{
         fontFamily: 'poppinsRegular',
         color: Colors.PRIMARY,
-        fontSize: 14,
+        fontSize: hp(1.4),
         paddingBottom: 10
     }
 })

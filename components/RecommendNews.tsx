@@ -3,11 +3,12 @@ import React, { useContext } from 'react'
 import NewsScrollView from './NewsScrollView'
 import { ApiContext } from '@/context/ApiContext'
 import { Colors } from '@/constants/Colors'
+import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 
 const RecommendNews = () => {
   const {newsData} =useContext<any>(ApiContext)
   return (
-    <View>
+    <View style={styles.main}>
       <Text style={styles.heading}>Recommend News</Text>
       <FlatList showsVerticalScrollIndicator={false} data={newsData} renderItem={(({ item, index }) => (
           <NewsScrollView index={index} items={item}/>
@@ -20,10 +21,15 @@ const RecommendNews = () => {
 export default React.memo(RecommendNews)
 
 const styles = StyleSheet.create({
+  main:{
+    height: hp(100)
+  },
     heading:{
-        padding: 20,
+        paddingLeft: 20,
+        paddingBottom: 10,
+        paddingTop: 10,
         fontFamily:'spaceBold',
-        fontSize: 24,
+        fontSize: hp(2.4),
         color: Colors.PRIMARY
     }
 })

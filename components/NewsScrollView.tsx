@@ -4,6 +4,7 @@ import { ApiContext } from '@/context/ApiContext'
 import { Link, useRouter } from 'expo-router'
 import { Colors } from '@/constants/Colors'
 import Ionicons from '@expo/vector-icons/Ionicons';
+import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 
 interface Props{
     category?: string,
@@ -28,12 +29,12 @@ const NewsScrollView: React.FC<Props> = ({index, items}) => {
     }
     const size = 50
   return (
-    <View style={styles.main}>
+    <View style={styles.main}> 
       <View  style={styles.newsMainContainer} key={index}>
         <TouchableOpacity activeOpacity={0.6} style={styles.touchableContainer} onPress={()=> router.push(items.url)}>
-         <View style={styles.newsImageContainer}>
+         
             <Image style={styles.newsImage} source={{uri: items.urlToImage}}/>
-         </View>
+         
          <View style={styles.newsDataContainer}>
             <Text style={styles.newsDataTitle} numberOfLines={1}>{items.title.slice(0,titleLimit)+ '...'}</Text>
             <Text style={styles.newsDataDescription} numberOfLines={2}>{items.description}</Text>
@@ -41,7 +42,7 @@ const NewsScrollView: React.FC<Props> = ({index, items}) => {
          </View>
          </TouchableOpacity >
          <TouchableOpacity onPress={onClick} style={styles.newsBookmarkContainer}>
-         <Ionicons name={status ? "bookmark" : "bookmark-outline"} size={40} color={Colors.PRIMARY} />
+         <Ionicons name={status ? "bookmark" : "bookmark-outline"} size={hp(4)} color={Colors.PRIMARY} />
          </TouchableOpacity>
       </View>
     </View>
@@ -52,48 +53,45 @@ export default React.memo(NewsScrollView)
 
 const styles = StyleSheet.create({
     main:{
-        paddingHorizontal: 20,
-        paddingBottom: 20,
+        paddingHorizontal: wp(6),
+        paddingBottom: hp(2),
+        // width: wp(100),
+        // height: hp(15)
+        
     },
     newsMainContainer:{
         flexDirection: 'row',
         // justifyContent: 'center',
         alignItems: 'center',
-        width: '90%',
+        width: wp(80),
     },
-    newsImageContainer:{
-        width: 100,
-        height: 100,
-        marginRight: 15,
-    },
+
     touchableContainer:{
         flexDirection: 'row',
         justifyContent: 'space-between',
         alignItems: 'center',
-        width: '100%'
+        width: wp(80)
     },
     newsImage:{
-        // width: '100%',
-        // height: '100%',
-        width: PixelRatio.getPixelSizeForLayoutSize(70),
-        height: PixelRatio.getPixelSizeForLayoutSize(70),
+        width: wp(20),
+        height: hp(10),
         borderRadius: 15,
     },
     newsDataContainer:{
-        width: '70%',
-        paddingRight: '10%',
+        width: wp(55),
+        paddingRight: wp(8),
     },
     newsDataTitle:{
-        fontSize: 12,
+        fontSize: hp(1.2),
         fontFamily: 'poppinsSemiBoldItalic',
         color: Colors.PRIMARY
     },
     newsDataDescription:{
-        fontSize: 12,
+        fontSize: hp(1.2),
         fontFamily:'poppinsRegular'
     },
     newsDataPublished:{
-        fontSize: 12,
+        fontSize: hp(1.2),
         fontFamily: 'poppinsRegular',
         color: Colors.DARK
     },

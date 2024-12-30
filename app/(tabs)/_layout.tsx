@@ -2,6 +2,7 @@ import React from 'react'
 import { Tabs } from 'expo-router'
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { Colors } from '@/constants/Colors';
+import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 
 
 
@@ -20,7 +21,8 @@ const TabLayout = () => {
         shadowColor: 'transparent',
       },
       tabBarLabelStyle:{
-        fontFamily: 'poppinsRegular'
+        fontFamily: 'poppinsRegular',
+        fontSize: hp(1.2)
       },
       headerTitleStyle:{
         fontFamily: 'poppinsBold',
@@ -32,28 +34,28 @@ const TabLayout = () => {
         options={{
           title: 'Home',
           headerTitle: 'The Daily Scroll',
-          tabBarIcon: ({color})=> <Ionicons name="home" size={24} color={color} />,
+          tabBarIcon: ({color})=> <Ionicons name="home" size={hp(2.4)} color={color} />,
         }} />
       
       <Tabs.Screen
         name='Category'
         options={{
           title: 'Explore',
-          tabBarIcon: ({color})=> <Ionicons name="compass-outline" size={24} color={color} />
+          tabBarIcon: ({color})=> <Ionicons name="compass-outline" size={hp(2.4)} color={color} />
         }} />
       
       <Tabs.Screen
         name='Saved'
         options={{
           title: 'Saved',
-          tabBarIcon: ({color})=> <Ionicons name="bookmarks-outline" size={24} color={color} />
+          tabBarIcon: ({color})=> <Ionicons name="bookmarks-outline" size={hp(2.4)} color={color} />
         }} />
 
       <Tabs.Screen
         name='account'
         options={({ route }) => ({
           title:'Account',
-          tabBarIcon: ({ color }) => <Ionicons name="person-outline" size={24} color={color} />,
+          tabBarIcon: ({ color }) => <Ionicons name="person-outline" size={hp(2.4)} color={color} />,
         })} />
     </Tabs>
   )
