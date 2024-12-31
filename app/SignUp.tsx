@@ -88,7 +88,7 @@ const SignUp = () => {
                 source={require('@/assets/images/signup-bg.png')}
                 style={styles.signUpTopContainer}
             >
-                <Image source={require('@/assets/images/login-signup-image.png')} />
+                <Image style={{width: wp(30), height: hp(20)}} source={require('@/assets/images/login-signup-image.png')} />
                 <Text style={styles.signUpTopContainerTitle}>Create Your Account!</Text>
             </ImageBackground>
             <View style={styles.signUpBottomContainer}>
@@ -124,7 +124,8 @@ const SignUp = () => {
                             onPress={() => setIsPassVisible(!isPassVisible)}
                             style={styles.showHideButton}
                         >
-                            <Text>{isPassVisible ? 'Show' : 'Hide'}</Text>
+                            <Ionicons name={isPassVisible? "eye-outline": 'eye-off-outline'} size={hp(3.5)} color={Colors.DARK} />
+                            
                         </TouchableOpacity>
                     </View>
                     <View style={styles.inputContainer}>
@@ -140,7 +141,8 @@ const SignUp = () => {
                             onPress={() => setIsRetypePassVisible(!isRetypePassVisible)}
                             style={styles.showHideButton}
                         >
-                            <Text>{isRetypePassVisible ? 'Show' : 'Hide'}</Text>
+                            <Ionicons name={isRetypePassVisible? "eye-outline": 'eye-off-outline'} size={hp(3.5)} color={Colors.DARK} />
+                            
                         </TouchableOpacity>
                     </View>
                 </View>
@@ -184,7 +186,7 @@ const SignUp = () => {
 const styles = StyleSheet.create({
     signUpContainer: {
         flex: 1,
-        width: '100%',
+        width: wp(100),
         justifyContent: 'center',
         backgroundColor: Colors.WHITE
     },
@@ -195,11 +197,11 @@ const styles = StyleSheet.create({
     showHideButton: {
         position: 'absolute',
         right: 15,
-        top: 20,
+        top: 18,
     },
     signUpTopContainer: {
         width: wp(100),
-        height: hp(32),
+        height: hp(40),
         alignItems: 'center',
         justifyContent: 'center'
     },
@@ -214,7 +216,7 @@ const styles = StyleSheet.create({
     },
     signUpBottomContainer: {
         padding: 20,
-        width: '100%',
+        width: wp(100),
         backgroundColor: Colors.WHITE,
         borderTopLeftRadius: 25,
         borderTopRightRadius: 25,
@@ -223,7 +225,7 @@ const styles = StyleSheet.create({
     },
     
     signUpBottomContainerInputsContainer: {
-        gap: 20,
+        gap: 10,
         marginBottom: 20
     },
     signUpBottomContainerInputs: {
@@ -232,7 +234,7 @@ const styles = StyleSheet.create({
         borderColor: '#E1E1E1',
         borderWidth: 2,
         fontFamily: 'interMedium',
-        fontSize: hp(1.2),
+        fontSize: hp(1.4),
         justifyContent: 'center'
     },
     signUpBottomContainerButtonContainer: {
@@ -256,7 +258,8 @@ const styles = StyleSheet.create({
         fontSize: hp(1.2),
     },
     signUpBottomContainerText: {
-        fontFamily: 'poppinsRegular'
+        fontFamily: 'poppinsRegular',
+        fontSize: hp(1.2)
     },
     signUpBottomContainerLink: {
         color: Colors.PRIMARY

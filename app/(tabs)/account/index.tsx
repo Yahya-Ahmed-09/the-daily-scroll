@@ -87,7 +87,7 @@ const styles = StyleSheet.create({
     borderBottomRightRadius: 50,
   },
   userImage: {
-    width: wp(20),
+    width: wp(19),
     height: hp(10),
     borderRadius: 50
   },

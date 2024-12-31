@@ -7,6 +7,7 @@ import { getAuth, signInWithEmailAndPassword } from 'firebase/auth'
 import { AuthContext } from '@/context/AuthContext'
 import Loader from '@/components/Loader'
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
+import Ionicons from '@expo/vector-icons/Ionicons'
 
 
 
@@ -84,7 +85,7 @@ const Login = () => {
                     activeOpacity={0.6} 
                     onPress={() => setIsPassVisible(!isPassVisible)} 
                     style={styles.showHideButton}>
-                    <Text>{isPassVisible ? 'Show' : 'Hide'}</Text>
+                    <Ionicons name={isPassVisible? "eye-outline": 'eye-off-outline'} size={hp(3.5)} color={Colors.DARK} />
                 </TouchableOpacity>
             </View>
             <View style={styles.loginBottomContainerbtnContainer}>
@@ -124,7 +125,7 @@ const styles = StyleSheet.create({
     showHideButton: {
         position: 'absolute',
         right: 15,
-        top: 20,
+        top: 18,
     },
     loginTopContainer: {
         justifyContent: 'center',
@@ -155,7 +156,7 @@ const styles = StyleSheet.create({
         borderColor: '#E1E1E1',
         borderWidth: 2,
         fontFamily: 'interMedium',
-        fontSize: hp(1.2),
+        fontSize: hp(1.4),
         justifyContent: 'center'
     },
     loginBottomContainerbtnContainer: {

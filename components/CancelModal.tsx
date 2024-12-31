@@ -99,6 +99,7 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between',
         alignItems: 'center',
         gap: 30,
+        width: '99%'
     },
     discardBtn: {
         paddingHorizontal: wp(6),

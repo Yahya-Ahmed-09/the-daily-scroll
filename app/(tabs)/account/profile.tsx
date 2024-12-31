@@ -8,20 +8,19 @@ import DropDown from '@/components/DropDown';
 import { useRouter } from 'expo-router';
 import { doc, getFirestore, updateDoc } from 'firebase/firestore';
 import { app } from '@/db/firestore';
-import AsyncStorage from '@react-native-async-storage/async-storage';
 import CancelModal from '@/components/CancelModal';
 import NavigationHeader from '@/components/NavigationHeader';
+import * as FileSystem from 'expo-file-system';
 import { heightPercentageToDP as hp, widthPercentageToDP as wp } from 'react-native-responsive-screen';
 
 const Profile = () => {
-  const { isModalVisible,modalVisibility,userData, genderData, isLoggedUid } = useContext<null | any>(AuthContext)
+  const { modalVisibility,userData, genderData, isLoggedUid } = useContext<null | any>(AuthContext)
   const bgImage = require('@/assets/images/dummy-user.webp')
   const [name, setName] = useState<any>(userData.fullName)
   const [emailAddress, setEmailAddress] = useState<any>(userData.email)
   const [phone, setPhone] = useState<String>(userData.phone)
   const [errorMessage, setErrorMessage] = useState("")
-  const [image, setImage] = useState<String | null>(userData.image)
-  const [isCancel, setIsCancel] = useState<boolean>(false)
+  const [image, setImage] = useState<string | null>(userData.image)
   const router = useRouter()
 
   const onBack =()=>{
@@ -87,10 +86,19 @@ const onCancel =()=>{
 
 
     if (!result.canceled) {
-      setImage(result.assets[0].uri);
+      const uri = result.assets[0].uri;
+      const base64Image  = await FileSystem.readAsStringAsync(uri, {
+        encoding: FileSystem.EncodingType.Base64
+      });
+
+      setImage(`data:image/jpeg;base64,${base64Image}`);
+
     }
+
   };
   const data = ['Male', 'Female']
+
+  
 
   return (
     <View style={styles.mainContaier}>
