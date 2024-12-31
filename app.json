@@ -1,8 +1,8 @@
 {
   "expo": {
     "name": "The-Daily-Scroll",
-    "slug": "The-Daily-Scroll",
-    "version": "1.0.0",
+    "slug": "The-Daily Scroll",
+    "version": "2.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
     "scheme": "myapp",
@@ -41,7 +41,7 @@
       [
         "expo-splash-screen",
         {
-          "image": "./assets/images/splash.png",
+          "image": "./assets/images/splash-icon.png",
           "imageWidth": 200,
           "resizeMode": "contain",
           "backgroundColor": "#ffffff"
