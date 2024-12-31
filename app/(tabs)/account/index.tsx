@@ -1,4 +1,4 @@
-import { View, Text, Button, ImageBackground, StyleSheet, Image, ActivityIndicator } from 'react-native'
+import { View, Text, Button, ImageBackground, StyleSheet, Image, ActivityIndicator, Dimensions } from 'react-native'
 import React, { useCallback, useContext, useEffect, useState } from 'react'
 import { Link, useFocusEffect, useRouter } from 'expo-router'
 import { Colors } from '@/constants/Colors'
@@ -8,12 +8,11 @@ import NavigationHeader from '@/components/NavigationHeader'
 import { heightPercentageToDP as hp, widthPercentageToDP as wp } from 'react-native-responsive-screen';
 
 
-
 const Account = () => {
   const { userLoggedOut, userData, getUserData, loading } = useContext<null | any>(AuthContext)
   const userImage = require('@/assets/images/dummy-user.webp')
 
-
+ 
   useFocusEffect(
     useCallback(() => {
       getUserData()
@@ -70,6 +69,8 @@ const Account = () => {
 
 export default React.memo(Account)
 
+const { width } = Dimensions.get('window');
+const imageSize = width < 400 ? 80 : 100;
 const styles = StyleSheet.create({
   mainContainer: {
     flex: 1,
@@ -87,9 +88,9 @@ const styles = StyleSheet.create({
     borderBottomRightRadius: 50,
   },
   userImage: {
-    width: wp(19),
-    height: hp(10),
-    borderRadius: 50
+    width: imageSize,
+    height: imageSize,
+    borderRadius: wp(50)
   },
   userDetailsContainer:{
     flexDirection: 'row',

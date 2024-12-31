@@ -1,4 +1,4 @@
-import { View, Text, StyleSheet, ImageBackground, TouchableOpacity, TextInput, ScrollView } from 'react-native'
+import { View, Text, StyleSheet, ImageBackground, TouchableOpacity, TextInput, ScrollView, Dimensions } from 'react-native'
 import React, { useContext, useEffect, useState } from 'react'
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { AuthContext } from '@/context/AuthContext'
@@ -101,6 +101,7 @@ const onCancel =()=>{
   
 
   return (
+    <>
     <View style={styles.mainContaier}>
       <View style={styles.header}>
       <NavigationHeader  title={'Profile'} iconFunc={onBack}/>
@@ -170,19 +171,25 @@ const onCancel =()=>{
             <TouchableOpacity activeOpacity={0.6} style={styles.cancelBtn} onPress={onCancel}>
               <Text style={styles.cancelText}>Cancel</Text>
             </TouchableOpacity>
-              <CancelModal />
+              
             <TouchableOpacity activeOpacity={0.6} style={styles.saveBtn} onPress={onSave}>
               <Text style={styles.saveText}>Save</Text>
             </TouchableOpacity>
         </View>
       </View>
       </ScrollView>
+      
     </View>
+
+<CancelModal />
+</>
   )
 }
 
 export default React.memo(Profile)
 
+const { width } = Dimensions.get('window');
+const imageSize = width < 400 ? 80 : 100;
 const styles = StyleSheet.create({
   mainContaier: {
     flex: 1,
@@ -201,13 +208,13 @@ const styles = StyleSheet.create({
     gap: 20
   },
   topContainerBGImage: {
-    height: hp(10),
-    width: wp(20),
+    height: imageSize,
+    width: imageSize,
     borderRadius: 50,
   },
   topContainerForegroundContainer: {
-    height: hp(10),
-    width: wp(20),
+    height: imageSize,
+    width: imageSize,
     borderRadius: hp(50),
     justifyContent: 'center',
     alignItems: 'center',

@@ -1,4 +1,4 @@
-import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
+import { Dimensions, Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import React, { useCallback, useContext } from 'react'
 import { AuthContext } from '@/context/AuthContext'
 import { useFocusEffect } from '@react-navigation/native'
@@ -45,6 +45,9 @@ const HomeHeader = () => {
 
 export default React.memo(HomeHeader)
 
+const { width } = Dimensions.get('window');
+const imageSize = width < 400 ? 40 : 55;
+
 const styles = StyleSheet.create({
     headerContainer: {
         flexDirection: 'row',
@@ -71,9 +74,9 @@ const styles = StyleSheet.create({
         marginHorizontal: 10,
     },
     userImage: {
-        width: wp(10),
-        height: hp(5),
-        borderRadius: 30,
+        width: imageSize,
+        height: imageSize,
+        borderRadius: 50,
         resizeMode: 'cover',
     },
 })
