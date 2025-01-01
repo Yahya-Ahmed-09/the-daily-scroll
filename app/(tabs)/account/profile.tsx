@@ -58,6 +58,8 @@ const onSave = ()=>{
   try {
     if(emailAddress === ''){
       setEmailAddress(userData.email)
+    }else if(phone === ''){
+      setPhone(userData.phone)
     }
     if(!(name !== '' && validateEmail(emailAddress))){
       setEmailErrorMessage("Please Enter Correct Email Address")
