@@ -28,11 +28,9 @@ const AuthProvider = ({children})=>{
             setIsLoggedUid(value);
           } else {
             console.log("User Logged Uid Not Found in AsyncStorage");
-            // Consider retrying or handling the case where the user is not logged in
           }
         } catch (error) {
           console.error("Error fetching UserLoggedUid:", error);
-          // Handle errors, e.g., display an error message or retry
         }
     }
 

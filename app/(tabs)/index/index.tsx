@@ -7,13 +7,13 @@ import RecommendNews from '@/components/RecommendNews'
 import HomeHeader from '@/components/HomeHeader';
 import { AuthContext } from '@/context/AuthContext';
 import { Colors } from '@/constants/Colors';
+import { heightPercentageToDP as hp, widthPercentageToDP as wp } from 'react-native-responsive-screen';
 
 
 const Home = () => {
  const {isLoading, ApiCall} = useContext<any>(ApiContext);
  const {loading, getUserData} = useContext<any>(AuthContext)
 
- const [isConnected, setIsConnected] = useState<boolean | null>(true);
   useEffect(()=>{
 
     
@@ -53,7 +53,7 @@ if(loading){
    return <ActivityIndicator size={50} color={Colors.PRIMARY} />
 }
   return (
-    <View style={{flex: 1,}}>
+    <View style={{}}>
       <HomeHeader />
       {
         isLoading ? (
@@ -61,7 +61,9 @@ if(loading){
         ): (
         <>
         <BreakingNews />
+        <View style={{}}>
          <RecommendNews />
+         </View>
          </>)
       }
       

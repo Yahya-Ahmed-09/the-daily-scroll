@@ -21,7 +21,9 @@ const BreakingNews = () => {
   const filterData = configData.slice(0, maxLength)
   const [data, setData] = useState<Object[]>(filterData)
 
-
+  useEffect(() => {
+    
+  }, [])
   const onViewableItemsChanged = ({
     viewableItems,
   }: {

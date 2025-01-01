@@ -19,7 +19,8 @@ const Profile = () => {
   const [name, setName] = useState<any>(userData.fullName)
   const [emailAddress, setEmailAddress] = useState<any>(userData.email)
   const [phone, setPhone] = useState<String>(userData.phone)
-  const [errorMessage, setErrorMessage] = useState("")
+  const [emailErrorMessage, setEmailErrorMessage] = useState("")
+  const [phoneErrorMessage, setPhoneErrorMessage] = useState("")
   const [image, setImage] = useState<string | null>(userData.image)
   const router = useRouter()
 
@@ -55,11 +56,16 @@ const updateDocument = async()=>{
 
 const onSave = ()=>{
   try {
-    if(name !== '' && validateEmail(emailAddress)){
+    if(emailAddress === ''){
+      setEmailAddress(userData.email)
+    }
+    if(!(name !== '' && validateEmail(emailAddress))){
+      setEmailErrorMessage("Please Enter Correct Email Address")
+    }else if(phone.length !== 11){
+      setPhoneErrorMessage("The phone number must be 11 characters")
+    }else{
       updateDocument()
       router.navigate('/(tabs)/account')
-    }else{
-      setErrorMessage("Please Enter Correct Email Address")
     }
   } catch (error) {
     console.log(error)
@@ -146,7 +152,7 @@ const onCancel =()=>{
               style={styles.textInput}
               />
               {
-                errorMessage ? (<Text style={{color: 'red', fontSize: 10}}>{errorMessage}</Text>): null
+                emailErrorMessage ? (<Text style={{color: 'red', fontSize: 10}}>{emailErrorMessage}</Text>): null
               }
             
         </View>
@@ -162,9 +168,12 @@ const onCancel =()=>{
               placeholder={userData.phone}
               placeholderTextColor='#b5b5b5'
               onChangeText={newPhone => setPhone(newPhone)}
-              textContentType='telephoneNumber'
+              keyboardType='number-pad'
               style={styles.textInput}
               />
+              {
+                phoneErrorMessage ? (<Text style={{color: 'red', fontSize: 10}}>{phoneErrorMessage}</Text>): null
+              }
         </View>
 
         <View style={styles.buttonContainer}>

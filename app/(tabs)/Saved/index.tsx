@@ -1,4 +1,4 @@
-import { FlatList, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
+import { Dimensions, FlatList, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import React, { useCallback, useContext, useEffect } from 'react'
 import { Colors } from '@/constants/Colors'
 import { ApiContext } from '@/context/ApiContext'
@@ -6,6 +6,9 @@ import NewsScrollView from '@/components/NewsScrollView'
 import { useFocusEffect } from '@react-navigation/native'
 import NavigationHeader from '@/components/NavigationHeader'
 import { heightPercentageToDP as hp, widthPercentageToDP as wp } from 'react-native-responsive-screen';
+
+const {width} = Dimensions.get('window');
+const height = width < 400 ? hp(64) : hp(76);
 
 const SavedArticles = () => {
   const { clearBookmark, savedArticle, loadBookmark, } = useContext<any>(ApiContext)
@@ -25,7 +28,7 @@ const SavedArticles = () => {
           <Text  style={{ color: Colors.WHITE, fontFamily:'poppinsRegular', paddingTop: 5 }}>Clear all</Text>
         </TouchableOpacity>
       </View>
-      <View style={{ flex: 1, marginLeft: wp(-5) }} >
+      <View style={{ height: height, marginLeft: wp(-5) }} >
         <FlatList
           showsVerticalScrollIndicator={false}
           data={savedArticle}

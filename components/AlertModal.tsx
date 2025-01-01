@@ -1,7 +1,6 @@
 import { Modal, StyleSheet, Text, Touchable, TouchableOpacity, View } from 'react-native'
 import React, { useState } from 'react'
 import { Colors } from '@/constants/Colors'
-import { useRouter } from 'expo-router'
 import { heightPercentageToDP as hp, widthPercentageToDP as wp } from 'react-native-responsive-screen';
 
 interface Props {

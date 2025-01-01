@@ -3,9 +3,11 @@ import { Tabs } from 'expo-router'
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { Colors } from '@/constants/Colors';
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
+import { Dimensions } from 'react-native';
 
-
-
+const {width} = Dimensions.get('window');
+const tabHeight = width < 400 ? 50 : 80;
+const padding = width < 400 ? 0 : 10;
 const TabLayout = () => {
   return (
     <Tabs screenOptions={{
@@ -14,10 +16,10 @@ const TabLayout = () => {
       headerShown: false,
       tabBarStyle:{
         backgroundColor: Colors.DARK,
-        margin:20,
-        height: 80,
-        paddingTop: 10,
-        borderRadius: 30,
+        // margin:20,
+        height: tabHeight,
+        paddingTop: padding,
+        // borderRadius: 30,
         shadowColor: 'transparent',
       },
       tabBarLabelStyle:{

@@ -1,4 +1,4 @@
-import { FlatList, StyleSheet, Text, View } from 'react-native'
+import { Dimensions, FlatList, StyleSheet, Text, View } from 'react-native'
 import React, { useContext } from 'react'
 import NewsScrollView from './NewsScrollView'
 import { ApiContext } from '@/context/ApiContext'
@@ -20,9 +20,12 @@ const RecommendNews = () => {
 
 export default React.memo(RecommendNews)
 
+const {width} = Dimensions.get('window');
+const height = width < 400 ? hp(47) : hp(54);
+
 const styles = StyleSheet.create({
   main:{
-    height: hp(100)
+    height: height
   },
     heading:{
         paddingLeft: 20,

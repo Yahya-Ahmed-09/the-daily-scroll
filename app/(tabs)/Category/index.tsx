@@ -1,5 +1,5 @@
 import React, { useCallback, useContext, useState } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, TextInput, FlatList, ActivityIndicator } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, TextInput, FlatList, ActivityIndicator, Dimensions } from 'react-native';
 import { useFocusEffect } from '@react-navigation/native';
 import { Colors } from '@/constants/Colors';
 import Ionicons from '@expo/vector-icons/Ionicons';
@@ -11,6 +11,9 @@ import { useRouter } from 'expo-router';
 import NavigationHeader from '@/components/NavigationHeader';
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 
+
+const {width} = Dimensions.get('window');
+const height = width < 400 ? hp(47) : hp(56);
 
 const Category = () => {
   const [activeCategory, setActiveCategory] = useState<String>('&category=business');
@@ -59,7 +62,7 @@ const Category = () => {
         <View>
           <Text style={[styles.heading, { fontSize: 18, color: Colors.DARK, paddingLeft: 20 }]}>{data}</Text>
         </View>
-        <View style={{ flex: 1, }} >
+        <View style={{height: height}} >
           <FlatList
             showsVerticalScrollIndicator={false}
             data={newsData}
