@@ -1,7 +1,6 @@
 import { View, Text } from 'react-native'
 import React, { useContext, useEffect, useState } from 'react'
 import Main from './Main'
-import { AuthContext, AuthProvider } from '@/context/AuthContext'
 import { ApiProvider } from '@/context/ApiContext'
 import NetInfo from '@react-native-community/netinfo';
 

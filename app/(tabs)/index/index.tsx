@@ -8,25 +8,39 @@ import HomeHeader from '@/components/HomeHeader';
 import { AuthContext } from '@/context/AuthContext';
 import { Colors } from '@/constants/Colors';
 import { heightPercentageToDP as hp, widthPercentageToDP as wp } from 'react-native-responsive-screen';
+import { useNavigation } from 'expo-router';
 
 
 const Home = () => {
  const {isLoading, ApiCall} = useContext<any>(ApiContext);
  const {loading, getUserData} = useContext<any>(AuthContext)
+ const navigation = useNavigation();
 
   useEffect(()=>{
 
     
+    
+  },[])
+ useFocusEffect(
+  React.useCallback(() => {
+  
+    ApiCall(50);
+    getUserData()
     const backAction = () => {
-      Alert.alert('Hold on!', 'Are you sure you want to go back?', [
-        {
-          text: 'Cancel',
-          onPress: () => null,
-          style: 'cancel',
-        },
-        {text: 'YES', onPress: () => BackHandler.exitApp()},
-      ]);
-      return true;
+      if (navigation.isFocused()) {
+        Alert.alert('Hold on!', 'Are you sure you want to exit?', [
+          {
+            text: 'Cancel',
+            onPress: () => null,
+            style: 'cancel',
+          },
+          { text: 'YES', onPress: () => BackHandler.exitApp() },
+        ]);
+        return true;
+      } else {
+        navigation.goBack();
+        return true;
+      }
     };
 
     const backHandler = BackHandler.addEventListener(
@@ -34,16 +48,8 @@ const Home = () => {
       backAction,
     );
 
-    return () => {
-      
-      backHandler.remove();
-    };
-  },[])
- useFocusEffect(
-  React.useCallback(() => {
-    ApiCall(50);
-    getUserData()
-  }, [])
+    return () => backHandler.remove();
+  }, [navigation])
   
 );
 

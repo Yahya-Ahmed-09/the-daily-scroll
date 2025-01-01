@@ -56,12 +56,16 @@ const updateDocument = async()=>{
 
 const onSave = ()=>{
   try {
-    if(emailAddress === ''){
-      setEmailAddress(userData.email)
-    }else if(phone === ''){
-      setPhone(userData.phone)
-    }
-    if(!(name !== '' && validateEmail(emailAddress))){
+    // if(emailAddress === ''){
+    //   setEmailAddress(userData.email)
+    // }else if(phone === ''){
+    //   setPhone(userData.phone)
+    // }
+    if(emailAddress === '') return setEmailAddress(userData.email)
+    if(phone === '') return setPhone(userData.phone)
+    if(name === '') return setName(userData.fullName)
+
+    if(!validateEmail(emailAddress)){
       setEmailErrorMessage("Please Enter Correct Email Address")
     }else if(phone.length !== 11){
       setPhoneErrorMessage("The phone number must be 11 characters")
