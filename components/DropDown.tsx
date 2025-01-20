@@ -11,7 +11,7 @@ interface Props{
 
 const DropDown: React.FC<Props> = ({genders}) => {
     const {genData, userData} = useContext<any>(AuthContext)
-    const [option, setOption] = useState(!userData.gender ? "Select Gender": userData.gender)
+    const [option, setOption] = useState(!userData?.gender ? "Select Gender": userData?.gender)
     const [isClicked, setIsClicked] = useState(false)
     
     useEffect(()=>{
@@ -28,7 +28,7 @@ const DropDown: React.FC<Props> = ({genders}) => {
     return (
         <View style={{ gap: 10 }}>
             <TouchableOpacity activeOpacity={0.6} style={styles.box} onPress={onSelectGender}>
-                <Text style={[styles.gender, {color: option === userData.gender ? Colors.LIGHT_GREY: Colors.BLACK}]}>{option}</Text>
+                <Text style={[styles.gender, {color: option === userData?.gender ? Colors.LIGHT_GREY: Colors.BLACK}]}>{option}</Text>
 
                 <Ionicons name={isClicked ? "chevron-up" : "chevron-down"} size={24} color="black" />
             </TouchableOpacity>

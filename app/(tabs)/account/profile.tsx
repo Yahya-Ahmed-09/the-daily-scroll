@@ -16,16 +16,16 @@ import { heightPercentageToDP as hp, widthPercentageToDP as wp } from 'react-nat
 const Profile = () => {
   const { modalVisibility,userData, genderData, isLoggedUid } = useContext<null | any>(AuthContext)
   const bgImage = require('@/assets/images/dummy-user.webp')
-  const [name, setName] = useState<any>(userData.fullName)
-  const [emailAddress, setEmailAddress] = useState<any>(userData.email)
-  const [phone, setPhone] = useState<String>(userData.phone)
+  const [name, setName] = useState<any>(userData?.fullName)
+  const [emailAddress, setEmailAddress] = useState<any>(userData?.email)
+  const [phone, setPhone] = useState<String>(userData?.phone)
   const [emailErrorMessage, setEmailErrorMessage] = useState("")
   const [phoneErrorMessage, setPhoneErrorMessage] = useState("")
-  const [image, setImage] = useState<string | null>(userData.image)
+  const [image, setImage] = useState<string | null>(userData?.image)
   const router = useRouter()
 
   const onBack =()=>{
-    if(name !== userData.fullName || emailAddress !== userData.email || phone !== userData.phone || genderData !== userData.gender || image !== userData.image){
+    if(name !== userData?.fullName || emailAddress !== userData?.email || phone !== userData?.phone || genderData !== userData?.gender || image !== userData?.image){
       modalVisibility(true)
     }else{
       router.back()
@@ -61,9 +61,9 @@ const onSave = ()=>{
     // }else if(phone === ''){
     //   setPhone(userData.phone)
     // }
-    if(emailAddress === '') return setEmailAddress(userData.email)
-    if(phone === '') return setPhone(userData.phone)
-    if(name === '') return setName(userData.fullName)
+    if(emailAddress === '') return setEmailAddress(userData?.email)
+    if(phone === '') return setPhone(userData?.phone)
+    if(name === '') return setName(userData?.fullName)
 
     if(!validateEmail(emailAddress)){
       setEmailErrorMessage("Please Enter Correct Email Address")
@@ -80,7 +80,7 @@ const onSave = ()=>{
 }
 
 const onCancel =()=>{
-  if(name !== userData.fullName || emailAddress !== userData.email || phone !== userData.phone || genderData !== userData.gender || image !== userData.image){
+  if(name !== userData?.fullName || emailAddress !== userData?.email || phone !== userData?.phone || genderData !== userData?.gender || image !== userData?.image){
     modalVisibility(true)
   }else{
     router.back()
@@ -140,7 +140,7 @@ const onCancel =()=>{
         <View style={styles.inputContainer}>
             <Text style={styles.label}>Full Name</Text>
             <TextInput 
-              placeholder={userData.fullName}
+              placeholder={userData?.fullName}
               placeholderTextColor='#b5b5b5'
               onChangeText={newName => setName(newName)}
               textContentType='name'
@@ -151,7 +151,7 @@ const onCancel =()=>{
         <View style={styles.inputContainer}>
             <Text style={styles.label}>Email Address</Text>
             <TextInput 
-              placeholder={userData.email}
+              placeholder={userData?.email}
               placeholderTextColor='#b5b5b5'
               onChangeText={newEmail => setEmailAddress(newEmail)}
               textContentType='emailAddress'
@@ -171,7 +171,7 @@ const onCancel =()=>{
         <View style={styles.inputContainer}>
             <Text style={styles.label}>Phone Number</Text>
             <TextInput 
-              placeholder={userData.phone}
+              placeholder={userData?.phone}
               placeholderTextColor='#b5b5b5'
               onChangeText={newPhone => setPhone(newPhone)}
               keyboardType='number-pad'

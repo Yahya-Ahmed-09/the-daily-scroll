@@ -38,7 +38,7 @@ const Account = () => {
           style={styles.TopContainerBGImage}
         >
           {
-            userData.image ? (<Image source={{ uri: userData.image }} style={styles.userImage} />) :
+            userData?.image ? (<Image source={{ uri: userData?.image }} style={styles.userImage} />) :
               (<Image source={userImage} style={styles.userImage} />)
           }
           <View style={styles.userDetailsContainer}>
@@ -50,10 +50,10 @@ const Account = () => {
             </View>
 
             <View style={styles.userDetails}>
-              <Text style={styles.userData}>{userData.fullName}</Text>
-              <Text  style={styles.userData}>{userData.email}</Text>
-              <Text style={styles.userData}>{userData.phone}</Text>
-              <Text style={styles.userData}>{userData.gender}</Text>
+              <Text style={styles.userData}>{userData?.fullName}</Text>
+              <Text  style={styles.userData}>{userData?.email}</Text>
+              <Text style={styles.userData}>{userData?.phone}</Text>
+              <Text style={styles.userData}>{userData?.gender}</Text>
             </View>
           </View>
         </ImageBackground>

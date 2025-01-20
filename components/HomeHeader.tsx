@@ -30,8 +30,8 @@ const HomeHeader = () => {
                         <Ionicons name="search-sharp" size={hp(4)} color="black" />
                     </TouchableOpacity>
                     <TouchableOpacity style={styles.iconButton} onPress={()=> router.push('/(tabs)/account')} activeOpacity={0.6}>
-                        {userData.image ? (
-                            <Image source={{ uri: userData.image }} style={styles.userImage} />
+                        {userData?.image ? (
+                            <Image source={{ uri: userData?.image }} style={styles.userImage} />
                         ) : (
                             <Image source={userImage} style={styles.userImage} />
                         )}
